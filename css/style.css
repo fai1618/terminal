@@ -32,17 +32,18 @@
         font-size:13px;
         background-color:black;
         /*color:rgb(44,255,88);*/
-        color:rgb(0,200,255);
+        color:#00c8ff;
         font-family:SourceCodePro;
         /*font-weight:bold;*/
-        overflow: scroll;   /* スクロール表示 */
+        overflow: scroll;/* スクロール表示 */
         border:rgba(0,200,255,0.8) solid 1px;
-        padding:10px;
+        padding:5px;
     }
     input{
         background-color:black;
         outline: 0;
-        border-color: black;
+        /*border-color: black;*/
+        border: none;
         /*color:rgb(44,255,88);*/
         color:rgb(0,200,255);
         font-family:SourceCodePro;
