@@ -79,6 +79,8 @@ var speedplane;
 
 var GL;//GLmodeの判別
 
+var hide = 0;//???隠し
+
 $(document).ready(function(){
                     $("#login").text("login:"+year+"/"+month+"/"+date+" "+hours+":"+minutes+":"+seconds);
                     $("#input").prepend(comName+":"+nowDirName+" "+userName+"$");
@@ -103,7 +105,7 @@ $(window).keydown(function commandswitch(e){
                   if(e.which === 13){
                     //入力済みのdiv処理
                     var command = $("#input input").val();
-                    $("#input").append(" "+command);
+                    $("#input").text(comName+":"+nowDirName+" "+userName+"$ "+command);//($("#input").apend(" "+command);としないのは)XSS対策
                     $("#input input").remove();
                     $('#input').attr('id', count);
                     //command判別
@@ -144,6 +146,17 @@ $(window).keydown(function commandswitch(e){
                 }
                     e.preventDefault();
                     count++;
+                  }else{
+                    if(e.which === 220){//hidden
+                        hide++;
+                        if(hide === 10){
+                            console.log("%cCongratulations!", 'color: red');
+                            console.log("%cYou have found a hidden command.", 'color: red');
+                            console.log('%cred %cgreen %cblue', 'color: red', 'color: green; font-weight: bold', 'color:#0000ff');
+                            console.log('normal %cbold%c normal', 'font-weight: bold; font-size: large', '');
+                            console.log('http://qiita.com/chick307/items/060e2f505abf95576e2b');
+                        }
+                    }
                   }
                   });
 
@@ -190,21 +203,23 @@ function talk(saying){
     var res;
     if(talkTF === false){
         talkTF = true;
-        res = "===talkモード===";
+        res = "talkモードを開始します";
     }
     else{
-        res = ">";
         switch(saying){
-            case "こんにちは":res += saying;break;
-            case "こんばんは":res += saying;break;
-            case "あなたの名前は":res += "私の名前はペッパーです。";break;//talkOnly[?なし]
-            case "あなたの名前は":res += "私の名前はペッパーです。";break;//talkOnly[？なし] //?or？
+            case "こんにちは":res = saying;break;
+            case "こんばんは":res = saying;break;
+            case "おはよう":res = "おはようございます";break;
+            case "あなたの名前は":res = "私の名前はペッパーです。";break;//talkOnly[?なし]
+            case "あなたの名前は":res = "私の名前はペッパーです。";break;//talkOnly[？なし] //?or？
             //case "":res += "...何か言ってくださいよ";break;//chatOnly[空白]
-            case "終了":res = "===talkモード終了===";talkTF = false;break;
-            default:res += "わかりません";break;
+            case "終了":res = "talkモードを終了します";talkTF = false;break;
+            default:res = "わかりません";break;
         }
     }
+
     $("#res"+count).append(res);
+    say(res);
     next();
     console.log("command: talk");
 }
@@ -280,9 +295,10 @@ function speed(a){
 function end(){//exit,logout
     $("#res"+count).prepend("<br>[END]");
     console.log("-END-");
+    stopGL();
     $("#terminal").scrollTop(terminalHeight*1000);
     $("#terminal").css("display","none");
-    window.open('about:blank','_self').close();
+    //window.close();
 }
 
 function dirError(){//mkdir,rmdir,cdでディレクトリ名が指定されていなかった時
@@ -550,7 +566,11 @@ function commandJudge(command){//mkdirの判別,NotFoundの処理
             if(cdJud === 1){
                 var bgm = audio(command);
                 if(bgm === 1){
-                    $("#res"+count).prepend("<div class=\"warning\">error:"+command+": command not found</div>");
+                    var makeDiv = $("<div/>");
+                    $(makeDiv).addClass('warning');
+                    //$("#res"+count).prepend("<div class=\"warning\">error:"+command+": command not found</div>");//こうしないのはXSS対策のため
+                    $(makeDiv).text("error:"+command+": command not found");
+                    $("#res"+count).prepend(makeDiv);
                 }
             }
         }
