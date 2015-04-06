@@ -1,0 +1,77 @@
+    @font-face {
+        font-family: SourceCodePro;
+        src: url(../fonts/SourceCodePro-Regular.ttf);
+    }
+    @font-face{
+        font-family:TRON;
+        src: url(../fonts/Tr2n.ttf);
+    }
+    body{
+        font-size:13px;
+        background-color:black;
+        /*color:rgb(44,255,88);*/
+        color:rgb(0,200,255);
+        /*font-family:SourceCodePro;*/
+        /*font-weight:bold;*/
+    }
+    .textSplitLoad {
+        display: none;
+    }
+    
+    #saying{
+        margin:0px;
+        text-align:center;
+        font-size:20px;
+        padding-bottom:20px;
+        visibility: hidden;
+        /*font-family:TRON;*/
+        font-family:SourceCodePro;
+    }
+    
+    #terminal{
+        font-size:13px;
+        background-color:black;
+        /*color:rgb(44,255,88);*/
+        color:rgb(0,200,255);
+        font-family:SourceCodePro;
+        /*font-weight:bold;*/
+        overflow: scroll;   /* スクロール表示 */
+        border:rgba(0,200,255,0.8) solid 1px;
+        padding:10px;
+    }
+    input{
+        background-color:black;
+        outline: 0;
+        border-color: black;
+        /*color:rgb(44,255,88);*/
+        color:rgb(0,200,255);
+        font-family:SourceCodePro;
+        /*font-weight:bold;*/
+        font-size:13px;
+        width:87%;
+    }
+    div{
+        white-space: nowrap;/*自動的に改行させない*/
+    }
+    .past {
+        /*background-color:black;*/
+        border-color: black;
+        /*color:rgb(44,255,88);*/
+        color:rgb(0,200,255);
+        font-family:SourceCodePro;
+        /*font-weight:bold;*/
+        font-size:15px;
+    }
+    .res{
+        /*background-color:black;*/
+        border-color: black;
+        /*color:rgb(44,255,88);*/
+        color:rgb(0,200,255);
+        font-family:SourceCodePro;
+        /*font-weight:bold;*/
+        font-size:15px;
+    }
+    .warning{
+        /*color:red*/
+        color:rgb(200,0,200);
+    }
