@@ -219,7 +219,7 @@ function talk(saying){
     }
 
     $("#res"+count).append(res);
-    say(res);
+    say(res);//wsa.js
     next();
     console.log("command: talk");
 }
