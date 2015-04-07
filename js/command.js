@@ -88,6 +88,7 @@ $(document).ready(function(){
                   
                     audiod = document.getElementById("audio");
                     //audiod.currentTime = 4;
+                    audiod.volume = 0.3;
                   });
 
 $(window).resize(function(){
