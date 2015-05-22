@@ -38,11 +38,11 @@ var allCommand = ["pwd","audio [option]",
                   "ls","mkdir [directoryName]",
                   "rmdir [directoryName]","now",
                   "cd [Absolute path]","startGL",
-                  "stopGL","up (only when GLmode)",
-                  "down (only　when GLmode)",
+                  "stopGL",/*"up (only when GLmode)",
+                  "down (only　when GLmode)",*/
                   /*"login",*/"logout or exit",
-                  "chat",
-                  "talk"
+                  "<s>chat</s>",
+                  "<s>talk</s>"
                   ];
 
 var allMusic = ["bgm.mp3","bird.mp3",
@@ -152,10 +152,11 @@ $(window).keydown(function commandswitch(e){
                         hide++;
                         if(hide === 10){
                             console.log("%cCongratulations!", 'color: red');
-                            console.log("%cYou have found a hidden command.", 'color: red');
+                            console.log("%cYou found a hidden command.", 'color: red');
                             console.log('%cred %cgreen %cblue', 'color: red', 'color: green; font-weight: bold', 'color:#0000ff');
                             console.log('normal %cbold%c normal', 'font-weight: bold; font-size: large', '');
                             console.log('http://qiita.com/chick307/items/060e2f505abf95576e2b');
+                            hide = 0;
                         }
                     }
                   }
