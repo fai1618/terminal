@@ -3,17 +3,19 @@
 <head>
 <meta charset="utf-8">
     <title>pepper β</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script>window.jQuery || document.write('<script src="./js/jquery-1.11.1.min.js"><\/script>');</script>
     <script type="text/javascript" src="js/three.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
     <script type="text/javascript" src="js/command.js"></script>
     <script type="text/javascript" src="js/saying.js"></script>
+    <script type="text/javascript" src="js/audio.js"></script>
     <script type="text/javascript" src="js/wsa.js"></script>
+
 </head>
 <body>
-    <audio src="music/Strobe(deadmau5).mp3" loop preload id="audio">
-        <p>ご利用のブラウザではBGMを再生することができません</p>
+    <audio src="music/Strobe.mp3" loop preload id="audio">
+        <p>ご利用のブラウザではBGMを再生することができません(audioタグが有効になっていません)</p>
     </audio>
     <script type="text/javascript" src="js/webGL.js"></script>
 
@@ -23,7 +25,10 @@
     <p id="login"></p>
     <p>If you type "help", appear command list --「help」と入力すると、使用可能なコマンド一覧が表示されます--</p>
     <p>Even if it is not displayed cursor, you can enter the characters --カーソルが表示されていなくても文字を入力できます--</p>
-    <div id="input"><input type="text" value="" autofocus></div>
+    <div id="input"><input type="text" id="CommandInput" value="" autofocus></div>
 </div>
+<input id="file" type="file">
+<div id="difference"></div>
+<div id="Ava"></div>
 </body>
 </html>

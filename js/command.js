@@ -42,7 +42,8 @@ var allCommand = ["pwd","audio [option]",
                   "down (only　when GLmode)",
                   /*"login",*/"logout or exit",
                   "chat",
-                  "talk"
+                  "talk",
+                  "GLonly"
                   ];
 
 var allMusic = ["bgm.mp3","bird.mp3",
@@ -58,8 +59,8 @@ var allMusic = ["bgm.mp3","bird.mp3",
                 "hoshinonagare.mp3",
                 "plankton.mp3",
                 "Racial.mp3",
-                "Sacred.mp3",
-                "Strobe(deadmau5).mp3"
+                "Sacred Sounds.mp3",
+                "Strobe.mp3"
                 ];
 
 var comName = "PCName";//"kouhei";
@@ -100,13 +101,14 @@ $(window).resize(function(){
                  });
 
 $(window).keydown(function commandswitch(e){
-                  $('input').focus();
+                  $("#terminal").css("display","block");
+                  $('#CommandInput').focus();
                   console.log("all"+e.which);
                   if(e.which === 13){
                     //入力済みのdiv処理
-                    var command = $("#input input").val();
+                    var command = $("#CommandInput").val();
                     $("#input").text(comName+":"+nowDirName+" "+userName+"$ "+command);//($("#input").apend(" "+command);としないのは)XSS対策
-                    $("#input input").remove();
+                    $("#CommandInput").remove();
                     $('#input').attr('id', count);
                     //command判別
                     $("#terminal").append("<div id=\"res"+count+"\" class=\"res\"></div>");
@@ -131,6 +133,7 @@ $(window).keydown(function commandswitch(e){
                         //case "login": login();break;
                         case "chat": chat();break;
                         case "talk": talk();break;
+                        case "GLonly": GLonly();break;
                         default: commandJudge(command); break;
                   }
                 }else{
@@ -226,7 +229,11 @@ function talk(saying){
 
 //----------------------------------------
 
-
+function GLonly(){
+    $("#terminal").css("display","none");
+    next();
+    console.log("command: GLonly");
+}
 
 /*
 function login(){
@@ -296,6 +303,7 @@ function end(){//exit,logout
     $("#res"+count).prepend("<br>[END]");
     console.log("-END-");
     stopGL();
+    source.stop();
     $("#terminal").scrollTop(terminalHeight*1000);
     $("#terminal").css("display","none");
     //window.close();
@@ -454,12 +462,12 @@ function cd(command){
 
 function next(){//次の入力用意
     console.log("next!");
-    $("#terminal").append("<div id=\"input\"><input autofocus></div>");
+    $("#terminal").append("<div id=\"input\"><input id=\"CommandInput\" autofocus></div>");
     var nowDIrName2
     //for(var q=0;q<nowDirName.length;q++){
     //}
     $("#input").prepend(comName+":"+nowDirName+" "+userName+"$");
-    $("#input input").focus();
+    $("#CommandInput").focus();
 }
 
 function audio(command){
