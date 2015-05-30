@@ -6,7 +6,11 @@
         font-family:TRON;
         src: url(../fonts/Tr2n.ttf);
     }
+    html{
+		scrollbar-face-color: #ff8c00;
+    }
     body{
+    	scrollbar-face-color: #ff8c00;
         font-size:13px;
         background-color:black;
         /*color:rgb(44,255,88);*/
