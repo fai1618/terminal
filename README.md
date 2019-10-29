@@ -1,6 +1,6 @@
-#terminal
-###DEMO
+# terminal
+### DEMO
 http://kouhei.github.io/terminal/
 
-##LICENCE
+## LICENCE
 MIT
